@@ -1,5 +1,3 @@
-const { NotImplementedError } = require('../extensions/index.js');
-
 /**
  * Given some integer, find the maximal number you can obtain
  * by deleting exactly one digit of the given number.
@@ -11,10 +9,31 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+const deleteDigit = (n) => {
+  // Used math approach instead of array approach because:
+  // 1. It is faster
+  // 2. I wanted to have fun
+  const removeDigit = (number, pos) => {
+    const before = ~~(number / 10 ** (pos + 1)) * 10 ** pos
+    const after = number % 10 ** pos
+    return before + after
+  }
+
+  let maxNumber = 0
+
+  for (
+    let i = 0, truncated = 0;
+    truncated !== n;
+    truncated = removeDigit(n, i), i++
+  ) {
+    maxNumber = (maxNumber < truncated)
+      ? truncated 
+      : maxNumber
+  }
+
+  return maxNumber
 }
+
 
 module.exports = {
   deleteDigit

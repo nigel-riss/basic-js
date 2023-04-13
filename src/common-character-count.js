@@ -31,6 +31,7 @@ const getCommonCharacterCount = (s1, s2) => {
   return commonNum
 }
 
+
 module.exports = {
   getCommonCharacterCount
 };
