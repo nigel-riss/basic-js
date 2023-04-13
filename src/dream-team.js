@@ -23,9 +23,8 @@ const createDreamTeam = members => {
     .join(``)
 
   return teamName || false
-  
 } 
-  
+
 
 module.exports = {
   createDreamTeam
