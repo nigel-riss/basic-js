@@ -9,19 +9,16 @@
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-const sortByHeight = arr => arr
-  .sort((a, b) => {
-    if (a === -1 || b === -1) { return 0 }
-    return a - b
-  })
+const sortByHeight = arr => {
+  const sorted = arr
+    .slice()
+    .sort((a, b) => a - b)
+    .filter(el => el > -1)
 
-console.log(sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]),
-[-1, 150, 160, 170, -1, -1, 180, 190])
+  return arr
+    .map(el => (el === -1) ? -1 : sorted.shift())
+}
 
-console.log(
-  sortByHeight([4, 2, 9, 11, 2, 16]),
-  [2, 2, 4, 9, 11, 16],
-)
 
 module.exports = {
   sortByHeight
