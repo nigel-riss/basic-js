@@ -8,10 +8,8 @@
  * For the input 'prettyandsimple@example.com', the output should be 'example.com'
  *
  */
-const getEmailDomain = email => {
-  const chunks = email.split(`@`)
-  return chunks[chunks.length - 1]
-}
+const getEmailDomain = email => email.split(`@`).pop()
+
 
 module.exports = {
   getEmailDomain
