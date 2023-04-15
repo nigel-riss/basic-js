@@ -22,24 +22,31 @@
  * ]
  */
 const minesweeper = matrix => {
+  // Building an empty field
   const field = new Array(matrix.length)
-    .fill(new Array(matrix[0].length).fill(0))
+    .fill(null)
+    .map(_row => new Array(matrix[0].length).fill(0))
 
-  // console.log(field)
+  const updateCell = (y, x) => {
+    for (let dY = -1; dY < 2; dY++) {
+      for (let dX = -1; dX < 2; dX++) {
+        if (dY === 0 && dX === 0) continue      // If current cell skip
+        if(matrix[y + dY]?.[x + dX]) {          // If is mined
+          field[y][x]++
+        }
+      }
+    }
+  }
+  
+  for (let y = 0; y < field.length; y++) {
+    for (let x = 0; x < field[y].length; x++) {
+      updateCell(y, x)
+    }
+  }
 
   return field
 }
 
-console.log(minesweeper([
-  [true, false, false],
-  [false, true, false],
-  [false, false, false],
-]))
-
-console.log(minesweeper([
-  [false, false, false],
-  [false, false, false],
-]))
 
 module.exports = {
   minesweeper
