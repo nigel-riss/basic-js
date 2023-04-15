@@ -31,7 +31,6 @@ const renameFiles = names => {
     })
 }
 
-console.log(renameFiles(['doc', 'doc', 'image', 'doc(1)', 'doc']), ['doc', 'doc(1)', 'image', 'doc(1)(1)', 'doc(2)'])
 
 module.exports = {
   renameFiles
