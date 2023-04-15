@@ -25,7 +25,7 @@ class VigenereCipheringMachine {
   }
 
   _checkArgs(text, key) {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
     if (!text || !key) {
       throw new Error(`Incorrect arguments!`)
     }
