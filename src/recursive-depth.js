@@ -26,6 +26,7 @@ class DepthCalculator {
   }
 }
 
+
 module.exports = {
   DepthCalculator
 };
