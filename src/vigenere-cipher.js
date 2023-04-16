@@ -23,7 +23,7 @@ const ALPHABET_START = 65
 const ALPHABET_LENGTH = 26
 
 class VigenereCipheringMachine {
-  constructor(isDirect) {
+  constructor(isDirect = true) {
     this.isDirect = isDirect
   }
 
@@ -71,6 +71,10 @@ class VigenereCipheringMachine {
       cryptedText += this._getCryptedChar(text[i], direction)
     }
 
+    if (!this.isDirect) {
+      return cryptedText.split(``).reverse().join(``)
+    }
+
     return cryptedText
   }
 
@@ -82,18 +86,6 @@ class VigenereCipheringMachine {
     return this._processText(text, key, DECRYPT)
   }
 }
-
-
-
-const directMachine = new VigenereCipheringMachine();
-const reverseMachine = new VigenereCipheringMachine(false);
-
-
-console.log(directMachine.decrypt(`bcdef bcdef`, `b`))
-console.log(directMachine.encrypt('LEARN frontend DEVELOPMENT :)', 'js'), 'UWJJW XAGWLNFM VNNNDXHVWWL :)');
-console.log(directMachine.decrypt('ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'), 'ROLLING SCOPES SHOOL RULES!');
-console.log(directMachine.decrypt('TRVVFB VT JSUIFMYL!', 'learning'), 'INVEST IN YOURSELF!');
-
 
 
 module.exports = {
